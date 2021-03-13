@@ -2,6 +2,9 @@ public class Account {
 
     Double balance;
     String accountType= "Checking";
+    //Might use this for something later.
+    //Maybe an added modifier in case of multiple accounts of same type
+    String IDnum;
 
 
     //A new instance of account would need starting funds and account type
