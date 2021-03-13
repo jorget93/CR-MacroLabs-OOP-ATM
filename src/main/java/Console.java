@@ -45,8 +45,8 @@ public class Console {
     public void depositOrWithdraw() {
         System.out.println("Would you like to deposit of withdraw funds?");
         System.out.println("1 - Deposit, 2 - Withdraw");
-
-        int numIn = 0;
+        int numIn = userInput.nextInt();
+        int numIn = "";
 
         switch (numIn) {
             case 1: {
@@ -65,10 +65,14 @@ public class Console {
     }
 
     public void deposit() {
-
+        System.out.println("Amount to be deposited? ");
+        //receive input
+        //parse to int
+        //if not an int return message to try again
     }
 
     public void withdraw() {
+        System.out.println("Amount to be withdrawn? ");
         if (// input greater than account balance ask for new amount)
     }
 }
