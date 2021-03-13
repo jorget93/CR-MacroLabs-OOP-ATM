@@ -1,4 +1,3 @@
-import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Console {
@@ -9,11 +8,10 @@ public class Console {
 
 
     //Simple user Interface
-    //Needs modification to only take in an integer
     public void chooseAccount(){
         Scanner userInput = new Scanner(System.in);
         System.out.println("Which account would you like to access?");
-        System.out.println("1 - Checking, 2 - Savings, 3 - Investing");
+        System.out.println("0 - Checking, 1 - Savings, 2 - Investing");
 
         int numIn = 0;
         if(userInput.hasNextInt() && userInput.nextInt() < 4){
@@ -24,15 +22,15 @@ public class Console {
         }
 
         switch (numIn){
-            case 1:  {
+            case 0:  {
                 System.out.println("You have chosen Checking");
                 break;
             }
-            case 2:  {
+            case 1:  {
                 System.out.println("You have chosen Savings");
                 break;
             }
-            case 3:  {
+            case 2:  {
 
                 System.out.println("You have chosen Investing");
                 break;
