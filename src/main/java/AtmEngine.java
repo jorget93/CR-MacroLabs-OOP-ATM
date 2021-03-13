@@ -5,7 +5,7 @@ import java.util.Map;
 public class AtmEngine {
     Map<String, List<Account>> bank;
 
-    //No need for parameters right now.
+    //No need for parameters right now, as far as I can tell.
     public AtmEngine(){}
 
 
@@ -43,4 +43,29 @@ public class AtmEngine {
         List<Account>currentUserAccounts= bank.get(password);
         currentUserAccounts.get(accountGiving).transfer(currentUserAccounts.get(accountReceiving),cash);
     }
+
+    //Method to ensure given password exists in database.
+    public Boolean userExists(String password){
+        for (String i : bank.keySet()) {
+            if(i.equals(password)){return true;}
+            else return false;
+        }
+        return false;
+    }
+
+    //Method to withdraw from a chosen account
+    public void withdrawCash(String password, Integer accountUsed, Double cash){
+        List<Account>currentUserAccounts= bank.get(password);
+        currentUserAccounts.get(accountUsed).withdraw(cash);
+    }
+
+    //Method to withdraw money from a chosen account.
+    public void depositCash(String password, Integer accountUsed, Double cash){
+        List<Account>currentUserAccounts= bank.get(password);
+        currentUserAccounts.get(accountUsed).deposit(cash);
+    }
+
+    //Method to return list of accounts??
+    //Method returning a specific account from a list?
+
 }
