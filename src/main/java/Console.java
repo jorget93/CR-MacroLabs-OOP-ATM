@@ -13,26 +13,26 @@ public class Console {
     public void chooseAccount(){
         Scanner userInput = new Scanner(System.in);
         System.out.println("Which account would you like to access?");
-        System.out.println("0 - Checking, 1 - Savings, 2 - Investing");
+        System.out.println("1 - Checking, 2 - Savings, 2 - Investing");
 
-        int numIn = 0;
-        if(userInput.hasNextInt() && userInput.nextInt() < 4){
-            numIn = userInput.nextInt();
+        String numIn = "";
+        if(userInput.hasNextLine()){
+            numIn = userInput.nextLine();
         }
         else {
             System.out.println("Please choose from the menu!");
         }
 
         switch (numIn){
-            case 0:  {
+            case "1":  {
                 System.out.println("You have chosen Checking");
                 break;
             }
-            case 1:  {
+            case "2":  {
                 System.out.println("You have chosen Savings");
                 break;
             }
-            case 2:  {
+            case "3":  {
 
                 System.out.println("You have chosen Investing");
                 break;
@@ -44,8 +44,8 @@ public class Console {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Would you like to deposit of withdraw funds?");
         System.out.println("1 - Deposit, 2 - Withdraw");
-        int numIn = userInput.nextInt();
-        int numIn = "";
+
+        String numIn = userInput.nextLine();
         switch (numIn) {
             case 1: {
                 this.deposit();
