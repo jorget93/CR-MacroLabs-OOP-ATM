@@ -47,11 +47,11 @@ public class Console {
 
         String numIn = userInput.nextLine();
         switch (numIn) {
-            case 1: {
+            case "1": {
                 this.deposit();
                 break;
             }
-            case 2: {
+            case "2": {
                 this.withdraw();
                 break;
             }
@@ -68,7 +68,7 @@ public class Console {
     }
     public void withdraw() {
         System.out.println("Amount to be withdrawn? ");
-        if (// input greater than account balance ask for new amount)
+        //if ( input greater than account balance ask for new amount)
     }
-}
+
 }
