@@ -7,6 +7,8 @@ public class Console {
         System.out.println("Welcome!");
     }
 
+    //Just to test!
+
 
     //Simple user Interface
     //Needs modification to only take in an integer
