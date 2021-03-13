@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Console {
+    Scanner userInput = new Scanner(System.in);
 
     public void greetingMessage(){
         System.out.println("Welcome to a real financial institution you can trust! \n");
@@ -8,19 +9,38 @@ public class Console {
 
     //Just to testing!
 
+    // We will need a prompt to enter a PIN before anything else.
+    // link to account object associated with pin in HashMap
+    public void pinRequestMenu() {
+        System.out.print("Please enter your PIN: ");
+
+        String input = "";
+        boolean pinMenu = true;
+        while (pinMenu) {
+            input = userInput.nextLine();
+            // actual conditional
+            //if (user pin is one of the keys in the hash map) {link to those accounts and break}
+            // below just for testing
+            if (input == "1234") {
+                pinMenu = false;
+                break;
+            }
+            System.out.println("PIN not recognized. Please try again.");
+        }
+    }
+
 
     //Simple user Interface
     public void chooseAccount(){
-        Scanner userInput = new Scanner(System.in);
         System.out.println("Which account would you like to access?");
         System.out.println("1 - Checking, 2 - Savings, 2 - Investing");
 
 
-        String numIn = "";
+        String input = "";
         boolean accountSelection = true;
         while (accountSelection) {
-            numIn = userInput.nextLine();
-            switch (numIn) {
+            input = userInput.nextLine();
+            switch (input) {
                 case "1": {
                     System.out.println("You have chosen Checking");
                     // insert call to correct map key/value(account object)
@@ -51,25 +71,28 @@ public class Console {
 
 
     }
-
+// this will expand to include transfer and other method calls
     public void depositOrWithdraw() {
-        Scanner userInput = new Scanner(System.in);
         System.out.println("Would you like to deposit or withdraw funds?");
         System.out.println("1 - Deposit, 2 - Withdraw");
 
-        String numIn = userInput.nextLine();
-        switch (numIn) {
-            case "1": {
-                this.deposit();
-                break;
-            }
-            case "2": {
-                this.withdraw();
-                break;
-            }
-            default: {
-                System.out.println("Please choose from the menu.");
-                break;
+        String input = "";
+        boolean depositOrWithdrawMenu = true;
+        while (depositOrWithdrawMenu) {
+            input = userInput.nextLine();
+            switch (input) {
+                case "1": {
+                    this.deposit();
+                    break;
+                }
+                case "2": {
+                    this.withdraw();
+                    break;
+                }
+                default: {
+                    System.out.println("Please choose from the menu.");
+                    break;
+                }
             }
         }
     }

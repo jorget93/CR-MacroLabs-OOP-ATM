@@ -47,6 +47,8 @@ public class Account {
 
 
     public void transfer(Account gettingMoney, Double amount){
+        //Can we write transfer so that it just calls the deposit and withdraw methods?
+        // - ryan
         gettingMoney.deposit(this.withdraw(amount));
     }
 

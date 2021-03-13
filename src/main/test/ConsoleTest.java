@@ -7,6 +7,6 @@ public class ConsoleTest{
         Console console = new Console();
         Console.greeting();
 
-        Assert.AssertTrue("Welcome!");
+        Assert.AssertTrue("Welcome!")
     }*/
 }

@@ -7,6 +7,7 @@ public class Main {
 
         Console consoleOut = new Console();
         consoleOut.greetingMessage();
+        consoleOut.pinRequestMenu();
         consoleOut.chooseAccount();
         consoleOut.depositOrWithdraw();
 
