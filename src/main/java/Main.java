@@ -8,7 +8,8 @@ public class Main {
         Console consoleOut = new Console();
         consoleOut.greetingMessage();
         consoleOut.chooseAccount();
+        consoleOut.depositOrWithdraw();
 
-        
+
     }
 }

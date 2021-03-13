@@ -42,6 +42,7 @@ public class Account {
     }
 
 
+
     public void transfer(Account gettingMoney, Double amount){
         gettingMoney.deposit(this.withdraw(amount));
     }
