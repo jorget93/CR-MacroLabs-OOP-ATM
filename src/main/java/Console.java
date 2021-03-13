@@ -2,6 +2,8 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Console {
+    
+    //added a comment
 
     public void greetingMessage(){
         System.out.println("Welcome!");
