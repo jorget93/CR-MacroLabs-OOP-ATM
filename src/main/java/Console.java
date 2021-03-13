@@ -6,7 +6,7 @@ public class Console {
         System.out.println("Welcome!");
     }
 
-    //Just to test!
+    //Just to testing!
 
 
     //Simple user Interface
@@ -41,6 +41,7 @@ public class Console {
     }
 
     public void depositOrWithdraw() {
+        Scanner userInput = new Scanner(System.in);
         System.out.println("Would you like to deposit of withdraw funds?");
         System.out.println("1 - Deposit, 2 - Withdraw");
         int numIn = userInput.nextInt();
