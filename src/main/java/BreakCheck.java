@@ -1,4 +1,8 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class BreakCheck {
+
     public String is123(){
         String newString = "";
         boolean redo = true;
@@ -29,5 +33,15 @@ public class BreakCheck {
             return 0.0;
         }
         return result;
+    }
+
+    public String pinGenerator(){
+        String newPin = "";
+        Random randomInt = new Random();
+        for(int i =8; i > 0; i--){
+            newPin += String.valueOf(randomInt.nextInt(9)+1);
+        }
+        System.out.println("Your new pin is: " + newPin);
+        return newPin;
     }
 }

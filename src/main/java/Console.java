@@ -8,8 +8,6 @@ public class Console {
         System.out.println("Welcome to a real financial institution! \n");
     }
 
-    //Just to testing!
-
     // We will need a prompt to enter a PIN before anything else.
     // link to account object associated with pin in HashMap
 
