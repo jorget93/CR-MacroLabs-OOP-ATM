@@ -1,22 +1,24 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AtmEngine {
-    Map<String, List<Account>> bank;
+
+    Map<String, List<Account>> bank=new HashMap<String, List<Account>>();
 
     //No need for parameters right now, as far as I can tell.
     public AtmEngine(){}
 
 
-    //Method to make a new account. adds new accounts and can add new users.
     public void addNewAccount(String passcode, Account newAccount){
-        List<Account> tempList = bank.get(passcode); //makes a placeholder list to hold the list from the map
-        if(tempList == null) { //If name is a new entry...
-            tempList = new ArrayList<>(); //make a new instance of list
-            bank.put(passcode, tempList); //and put the new empty list into the book attatched to a name
+        List<Account> tempList = bank.get(passcode);
+        System.out.println("Okay, it's null");
+        if(tempList == null) {
+            tempList = new ArrayList<>();
+            bank.put(passcode, tempList);
         }
-        tempList.add(newAccount);//adds the account to the list attatched to the password.
+        tempList.add(newAccount);
     }
 
     //Method to close an account
@@ -32,7 +34,7 @@ public class AtmEngine {
     public void printAllAccounts(String password){
         List<Account>currentUserAccounts= bank.get(password);
         for(int i=0; i<currentUserAccounts.size();i++){
-            System.out.println("Account #:"+i+" Type:"+currentUserAccounts.get(i).getAccountType());
+            System.out.println("Account #:"+(i+1)+" Type:"+currentUserAccounts.get(i).getAccountType());
             System.out.println("Balance-------->"+currentUserAccounts.get(i).getBalance());
         }
     }
