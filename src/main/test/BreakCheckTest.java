@@ -117,25 +117,7 @@ public class BreakCheckTest {
         System.setIn(sysInBackup);
         Assert.assertEquals(expected,actual);
     }
-//    @Test
-//    public void confirmIsNumberFourTest(){
-//        // Given, simulated user input
-//        BreakCheck newCheck = new BreakCheck();
-//        InputStream sysInBackup = System.in; // backup System.in to restore it later
-//        ByteArrayInputStream in = new ByteArrayInputStream("4".getBytes());
-//        System.setIn(in);
-//
-//        int status = SystemLambda.catchSystemExit(() -> {
-//            //the code under test, which calls System.exit(0);
-//        });
-//        // Expected
-//        String expected = "Investing";
-//        // Actual
-//        String actual = newCheck.confirmIsNumber();
-//        // Assert
-//        System.out.println(actual);
-//        System.setIn(sysInBackup);
-//        Assert.assertEquals(expected,actual);
+
 
 
 }
