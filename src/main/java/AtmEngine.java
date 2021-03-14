@@ -62,7 +62,6 @@ public class AtmEngine {
     public Boolean userExists(String password){
         for (String i : bank.keySet()) {
             if(i.equals(password)){return true;}
-            else return false;
         }
         return false;
     }
