@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Console {
+    Cases cases = new Cases();
     AtmEngine engine = new AtmEngine();
     Scanner userInput = new Scanner(System.in);
 
@@ -30,13 +31,7 @@ public class Console {
             customerStatus = userInput.nextLine();
             switch (customerStatus) {
                 case "1": {
-                    System.out.println("What type of account would you like to open?");
-                    String accountType = userInput.nextLine();
-                    System.out.println("What is your initial deposit?");
-                    Double initialDeposit = userInput.nextDouble();
-                    System.out.println("Choose a 4 digit PIN?");
-                    String pin = userInput.nextLine();
-                    engine.addNewAccount(pin, new Account(initialDeposit, accountType));
+                    cases.customerPortal();
                     invalidInput = false;
                     break;
                 }
