@@ -73,4 +73,12 @@ public class AtmEngine {
     }
 
 
+    public void chooseAccount(String password, int whichOne){
+        List<Account>currentUserAccounts= bank.get(password);
+        if(currentUserAccounts.get(whichOne).closeAccount()){
+            currentUserAccounts.remove(whichOne);
+        }
+    }
+
+
 }
