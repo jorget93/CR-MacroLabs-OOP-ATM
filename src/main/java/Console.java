@@ -47,14 +47,14 @@ public class Console {
         return customerStatus;
     }
 
-    public void pinRequest() {
+    /*public void pinRequest() {
         System.out.print("please enter PIN: ");
         String pinNumber = userInput.nextLine();
         if (pinNumber.length() != 4) {
             System.out.println("enter a 4 digit pin.");
         } else if (pinNumber)
         //integer.valueof()
-    }
+    }*/
 
     //Simple user Interface
     public String chooseAccount(){
@@ -95,9 +95,9 @@ public class Console {
         return accountType;
     }
 // this will expand to include transfer and other method calls
-    public String depositOrWithdraw() {
+    public String accountActions() {
         System.out.println("Would you like to deposit or withdraw funds?");
-        System.out.println("1 - Deposit, 2 - Withdraw");
+        System.out.println("1 - Deposit, 2 - Withdraw, 3 - Transfer, 4 - Add an Account");
 
         String accountAction = "";
         boolean invalidInput = true;
@@ -105,11 +105,15 @@ public class Console {
             accountAction = userInput.nextLine();
             switch (accountAction) {
                 case "1": {
-                    this.deposit();
                     break;
                 }
                 case "2": {
-                    this.withdraw();
+                    break;
+                }
+                case "3": {
+                    break;
+                }
+                case "4": {
                     break;
                 }
                 default: {
