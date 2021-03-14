@@ -113,6 +113,32 @@ public class TestAccount {
         Assert.assertEquals(0.0, b.getBalance(), 0.0001);
     }
 
+    @Test
+    public void historyTest() {
+        Account a = new Account(10.0);
+        a.deposit(33.33);
+        a.showTransactionHistory();
+    }
 
+    @Test
+    public void historyTest2() {
+        Account a = new Account(57.66);
+        a.withdraw(33.32);
+        a.showTransactionHistory();
+        System.out.println(a.getBalance());
+    }
+
+    @Test
+    public void historyTest3() {
+        Account a = new Account(57.66);
+        a.withdraw(33.32);
+        a.deposit(2.0);
+        a.deposit(8.9);
+        a.withdraw(100.0);
+        a.deposit(1.1);
+        a.withdraw(5.6);
+        a.showTransactionHistory();
+        System.out.println(a.getBalance());
+    }
 
 }

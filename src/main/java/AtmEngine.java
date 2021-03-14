@@ -58,6 +58,12 @@ public class AtmEngine {
         currentUserAccounts.get(accountUsed).deposit(cash);
     }
 
+    public void showAccountTransactions(String password, Integer accountUsed){
+        List<Account>currentUserAccounts=bank.get(password);
+        System.out.println("Transaction history for account #: "+(accountUsed+1));
+        currentUserAccounts.get(accountUsed).showTransactionHistory();
+    }
+
     //Method to ensure given password exists in database.
     public Boolean userExists(String password){
         for (String i : bank.keySet()) {

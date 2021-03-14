@@ -135,6 +135,21 @@ public class testAtmEngine {
     }
 
     @Test
+    public void depositAtmTest2(){
+        AtmEngine badBank = new AtmEngine();
+        Account a=new Account(16.66, "Investment");
+        Account b=new Account(0.0, "Whatever");
+        Account c= new Account(33.9,"PleaseJustWork");
+        String userPin="8675309";
+        badBank.addNewAccount(userPin,a);
+        badBank.addNewAccount(userPin,b);
+        badBank.addNewAccount(userPin,c);
+        badBank.depositCash(userPin,0,44.93);
+        badBank.depositCash(userPin,0,3.32);
+        badBank.printAllAccounts(userPin);
+    }
+
+    @Test
     public void withdrawAtmTest(){
         AtmEngine badBank = new AtmEngine();
         Account a=new Account(10.0, "Investment");
@@ -204,5 +219,40 @@ public class testAtmEngine {
         badBank.addNewAccount(userPin,c);
         badBank.transfer(userPin,0,1,15.5);
         badBank.printAllAccounts(userPin);
+    }
+
+    @Test
+    public void historyTest1(){
+        AtmEngine badBank = new AtmEngine();
+        Account a=new Account(10.0, "Investment");
+        Account b=new Account(0.0, "Whatever");
+        Account c= new Account(33.9,"PleaseJustWork");
+        String userPin="8675309";
+        String otherUser="88888888";
+        badBank.addNewAccount(userPin,a);
+        badBank.addNewAccount(userPin,b);
+        badBank.addNewAccount(userPin,c);
+        badBank.depositCash(userPin,1,30.0);
+        badBank.depositCash(userPin,2,9.0);
+        badBank.depositCash(userPin,0,9.0);
+        badBank.showAccountTransactions(userPin,1);
+    }
+
+    @Test
+    public void historyTest2(){
+        AtmEngine badBank = new AtmEngine();
+        Account a=new Account(10.0, "Investment");
+        Account b=new Account(0.0, "Whatever");
+        Account c= new Account(33.9,"PleaseJustWork");
+        String userPin="8675309";
+        String otherUser="88888888";
+        badBank.addNewAccount(userPin,a);
+        badBank.addNewAccount(userPin,b);
+        badBank.addNewAccount(userPin,c);
+        badBank.depositCash(userPin,2,30.44);
+        badBank.withdrawCash(userPin,2,60.12);
+        badBank.withdrawCash(userPin,2,190.99);
+        badBank.depositCash(userPin,2,9.16);
+        badBank.showAccountTransactions(userPin,2);
     }
 }
