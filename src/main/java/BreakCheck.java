@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class BreakCheck {
 
-    public String is123(){
+    //Ensures user chooses from options provided
+    public String confirmIsNumber(){
         String newString = "";
         boolean redo = true;
         while(redo) {
@@ -23,6 +24,8 @@ public class BreakCheck {
         }
         return null;
     }
+
+    //Checks that amount entered is a double
     public Double isDouble(){
         String newString = Console.getStringInput("Enter amount:");
         Double result = 0.0;
@@ -35,6 +38,7 @@ public class BreakCheck {
         return result;
     }
 
+    //Generates pin for user
     public String pinGenerator(){
         String newPin = "";
         Random randomInt = new Random();
