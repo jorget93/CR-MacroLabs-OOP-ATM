@@ -27,9 +27,18 @@ public class TestAccount {
 
     @Test
     public void constructorTest3() {
-        Account a = new Account(-5.0);
+        Account a = new Account(-5.0, "Investment");
         Assert.assertEquals(0.0, a.getBalance(), 0.0001);
     }
+
+    @Test
+    public void constructorTest4() {
+        String expected="Investment";
+        Account a = new Account(0.0, "Investment");
+        Assert.assertEquals(expected, a.getAccountType());
+    }
+
+
 
     @Test
     public void closeAccountTest1() {
