@@ -22,6 +22,7 @@ public class Main {
     public void newCustomer() {
 
         System.out.println("What type of account would you like to open?");
+        System.out.println("1 - Checking, 2 - Saving, 3 - Investment");
         String accountType = userInput.nextLine();
         System.out.println("What is your initial deposit?");
         Double initialDeposit = userInput.nextDouble();

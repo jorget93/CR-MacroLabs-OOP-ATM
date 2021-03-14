@@ -45,14 +45,6 @@ public class Console {
         return customerStatus;
     }
 
-    /*public void pinRequest() {
-        System.out.print("please enter PIN: ");
-        String pinNumber = userInput.nextLine();
-        if (pinNumber.length() != 4) {
-            System.out.println("enter a 4 digit pin.");
-        } else if (pinNumber)
-        //integer.valueof()
-    }*/
 
     //Simple user Interface
     public String chooseAccount(){
