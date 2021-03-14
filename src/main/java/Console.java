@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Console {
     Main main = new Main();
+    BreakCheck breakCheck = new BreakCheck();
     Scanner userInput = new Scanner(System.in);
 
     public void greetingMessage(){
@@ -20,7 +21,7 @@ public class Console {
 
     public String customerPortal(/*String prompt*/) {
         System.out.println("Are you already an account holder at real financial institution?");
-        System.out.println("1 - New Customer, 2 - Existing Customer");
+        System.out.println("1 - New Customer, 2 - Existing Customer, 3 - Exit");
         //getStringInput(prompt);
         String customerStatus = "";
         boolean invalidInput = true;
@@ -36,6 +37,10 @@ public class Console {
                     invalidInput = false;
                     break;
                 }
+                case "3": {
+                    System.out.println("Good - Bye.");
+                    System.exit(0);
+                }
                 default: {
                     System.out.println("Please choose from the menu.");
                     break;
@@ -47,47 +52,16 @@ public class Console {
 
 
     //Simple user Interface
-    public String chooseAccount(){
+    public String chooseAccount() {
         System.out.println("Which account would you like to access?");
-        System.out.println("1 - Checking, 2 - Savings, 3 - Investing");
-
-
-        String accountType = "";
-        boolean invalidInput = true;
-        while (invalidInput) {
-            accountType = userInput.nextLine();
-            switch (accountType) {
-                case "1": {
-                    System.out.println("You have chosen Checking");
-                    // insert call to correct map key/value(account object)
-                    invalidInput = false;
-                    break;
-                }
-                case "2": {
-                    System.out.println("You have chosen Savings");
-                    // insert call to correct map key/value(account object)
-                    invalidInput = false;
-                    break;
-                }
-                case "3": {
-
-                    System.out.println("You have chosen Investing");
-                    // insert call to correct map key/value(account object)
-                    invalidInput = false;
-                    break;
-                }
-                default: {
-                    System.out.println("Please choose from the menu.");
-                    break;
-                }
-            }
-        }
+        String accountType = breakCheck.confirmIsNumber();
+        System.out.println("You have chosen " + accountType);
         return accountType;
     }
 // this will expand to include transfer and other method calls
     public String accountActions() {
         System.out.println("Would you like to deposit or withdraw funds?");
-        System.out.println("1 - Deposit, 2 - Withdraw, 3 - Transfer, 4 - Add an Account");
+        System.out.println("1 - Deposit, 2 - Withdraw, 3 - Transfer, 4 - Go Back, 5 - Exit");
 
         String accountAction = "";
         boolean invalidInput = true;
@@ -107,8 +81,12 @@ public class Console {
                     break;
                 }
                 case "4": {
-                    main.additionalAccount();
+                    chooseAccount();
                     break;
+                }
+                case "5": {
+                    System.out.println("Good - Bye.");
+                    System.exit(0);
                 }
                 default: {
                     System.out.println("Please choose from the menu.");

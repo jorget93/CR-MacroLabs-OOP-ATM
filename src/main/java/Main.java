@@ -5,6 +5,7 @@ import java.util.Scanner;
  */
 public class Main {
     AtmEngine atmEngine = new AtmEngine();
+    BreakCheck newCheck = new BreakCheck();
     Scanner userInput = new Scanner(System.in);
     String pin = "";
 
@@ -22,18 +23,16 @@ public class Main {
     public void newCustomer() {
 
         System.out.println("What type of account would you like to open?");
-        System.out.println("1 - Checking, 2 - Saving, 3 - Investment");
-        String accountType = userInput.nextLine();
+        String accountType = newCheck.confirmIsNumber();
         System.out.println("What is your initial deposit?");
-        Double initialDeposit = userInput.nextDouble();
-        userInput.nextLine();
-        System.out.println("Choose a 4 digit PIN?");
-        String pin = userInput.nextLine();
-        this.pin = pin;
-
+        Double initialDeposit = newCheck.isDouble();
+        pin = newCheck.pinGenerator();
+        if(atmEngine.userExists(pin)){
+            pin = newCheck.pinGenerator();
+        }
+        System.out.println("Your new pin is: " + pin);
         Account account = new Account(initialDeposit,accountType);
         atmEngine.addNewAccount(pin, account);
-
         atmEngine.printAllAccounts(pin);
     }
 
