@@ -13,7 +13,6 @@ public class AtmEngine {
 
     public void addNewAccount(String passcode, Account newAccount){
         List<Account> tempList = bank.get(passcode);
-        System.out.println("Okay, it's null");
         if(tempList == null) {
             tempList = new ArrayList<>();
             bank.put(passcode, tempList);
@@ -22,7 +21,7 @@ public class AtmEngine {
     }
 
     //Method to close an account
-    public void closeAccount(String password, Integer whichOne){
+    public void closeAccount(String password, int whichOne){
         List<Account>currentUserAccounts= bank.get(password);
         if(currentUserAccounts.get(whichOne).closeAccount()){
             currentUserAccounts.remove(whichOne);
@@ -46,14 +45,6 @@ public class AtmEngine {
         currentUserAccounts.get(accountGiving).transfer(currentUserAccounts.get(accountReceiving),cash);
     }
 
-    //Method to ensure given password exists in database.
-    public Boolean userExists(String password){
-        for (String i : bank.keySet()) {
-            if(i.equals(password)){return true;}
-            else return false;
-        }
-        return false;
-    }
 
     //Method to withdraw from a chosen account
     public void withdrawCash(String password, Integer accountUsed, Double cash){
@@ -67,7 +58,14 @@ public class AtmEngine {
         currentUserAccounts.get(accountUsed).deposit(cash);
     }
 
-    //Method to return list of accounts??
-    //Method returning a specific account from a list?
+    //Method to ensure given password exists in database.
+    public Boolean userExists(String password){
+        for (String i : bank.keySet()) {
+            if(i.equals(password)){return true;}
+            else return false;
+        }
+        return false;
+    }
+
 
 }
