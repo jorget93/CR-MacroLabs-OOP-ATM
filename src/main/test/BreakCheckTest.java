@@ -10,7 +10,7 @@ public class BreakCheckTest {
         int expected = 8;
 
         int actual = newPin.length();
-        System.out
+        System.out.println(newPin);
         Assert.assertEquals(expected,actual);
     }
 }
