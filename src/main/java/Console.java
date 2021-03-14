@@ -1,8 +1,7 @@
 import java.util.Scanner;
 
 public class Console {
-    Cases cases = new Cases();
-    AtmEngine engine = new AtmEngine();
+    Main main = new Main();
     Scanner userInput = new Scanner(System.in);
 
     public void greetingMessage(){
@@ -31,7 +30,7 @@ public class Console {
             customerStatus = userInput.nextLine();
             switch (customerStatus) {
                 case "1": {
-                    cases.customerPortal();
+                    main.newCustomer();
                     invalidInput = false;
                     break;
                 }
@@ -48,6 +47,14 @@ public class Console {
         return customerStatus;
     }
 
+    public void pinRequest() {
+        System.out.print("please enter PIN: ");
+        String pinNumber = userInput.nextLine();
+        if (pinNumber.length() != 4) {
+            System.out.println("enter a 4 digit pin.");
+        } else if (pinNumber)
+        //integer.valueof()
+    }
 
     //Simple user Interface
     public String chooseAccount(){
