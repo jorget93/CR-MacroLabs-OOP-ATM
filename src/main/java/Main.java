@@ -8,6 +8,7 @@ public class Main {
     BreakCheck newCheck = new BreakCheck();
     Scanner userInput = new Scanner(System.in);
     String pin = "";
+    Integer currentAccount = 0;
 
     public static void main(String[] args) {
         // build instance of AtmEngine and call that in the
@@ -15,7 +16,7 @@ public class Main {
         Console consoleOut = new Console();
         consoleOut.greetingMessage();
         consoleOut.customerPortal();
-        consoleOut.chooseAccount();
+        //consoleOut.chooseAccount();
         consoleOut.accountActions();
 
     }
@@ -34,19 +35,20 @@ public class Main {
         Account account = new Account(initialDeposit,accountType);
         atmEngine.addNewAccount(pin, account);
         atmEngine.printAllAccounts(pin);
+        currentAccount = 0;
     }
 
     public void depositMade() {
         System.out.print("Amount to be deposited: ");
         Double amount = userInput.nextDouble();
-        atmEngine.depositCash(this.pin, 0, amount);
+        atmEngine.depositCash(this.pin, currentAccount, amount);
         atmEngine.printAllAccounts(pin);
     }
 
     public void withdrawMade() {
         System.out.print("Amount to be withdrawn: ");
         Double amount = userInput.nextDouble();
-        atmEngine.withdrawCash(pin, 0, amount);
+        atmEngine.withdrawCash(pin, currentAccount, amount);
         atmEngine.printAllAccounts(pin);
     }
 
@@ -62,15 +64,31 @@ public class Main {
 
     }
 
+
+    public void chooseAccount() {
+        atmEngine.printAllAccounts(pin);
+        System.out.println("Choose an account:");
+        Integer accountToAccess = userInput.nextInt();
+
+
+    }
+
     public void additionalAccount() {
         System.out.println("What type of account would you like to add?");
-        String additionalAccountType = userInput.nextLine();
+        String additionalAccountType = newCheck.confirmIsNumber();;
         System.out.println("What is your initial deposit?");
-        Double initialDeposit = userInput.nextDouble();
-        userInput.nextLine();
-
+        Double initialDeposit = newCheck.isDouble();
         Account account = new Account(initialDeposit,additionalAccountType);
         atmEngine.addNewAccount(pin, account);
         atmEngine.printAllAccounts(pin);
+    }
+
+    public void closeAccount() {
+        atmEngine.printAllAccounts(pin);
+        System.out.println("Which account would you like to close?");
+        Integer accountToClose = userInput.nextInt();
+        atmEngine.closeAccount(pin,accountToClose - 1);
+        System.out.println("Account closed the remaining funds will now be dispensed.");
+
     }
 }
