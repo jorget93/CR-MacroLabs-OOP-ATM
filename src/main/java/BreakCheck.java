@@ -27,14 +27,18 @@ public class BreakCheck {
 
     //Checks that amount entered is a double
     public Double isDouble(){
-        String newString = Console.getStringInput("Enter amount:");
+
         Double result = 0.0;
-        try {
-            result =  Double.parseDouble(newString);
-        } catch (NumberFormatException e) {
-            System.out.println("Please enter valid amount!");
-            return 0.0;
-        }
+        boolean check = true;
+        do {
+            String newString = Console.getStringInput("Enter amount:");
+            try {
+                result = Double.parseDouble(newString);
+                check = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter valid amount!");
+            }
+        } while(check);
         return result;
     }
 
@@ -42,10 +46,10 @@ public class BreakCheck {
     public String pinGenerator(){
         String newPin = "";
         Random randomInt = new Random();
-        for(int i =8; i > 0; i--){
-            newPin += String.valueOf(randomInt.nextInt(9)+1);
+        for(int i =8; i > 0; i--) {
+            newPin += String.valueOf(randomInt.nextInt(10));
         }
-        System.out.println("Your new pin is: " + newPin);
+
         return newPin;
     }
 }
