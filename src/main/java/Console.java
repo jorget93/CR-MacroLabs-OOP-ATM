@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Console {
     AtmEngine engine = new AtmEngine();
     Scanner userInput = new Scanner(System.in);
-    Cases cases = new Cases();
 
     public void greetingMessage(){
         System.out.println("Welcome to a real financial institution! \n");
@@ -24,13 +23,20 @@ public class Console {
     public String customerPortal(/*String prompt*/) {
         System.out.println("Are you already an account holder at real financial institution?");
         System.out.println("1 - New Customer, 2 - Existing Customer");
+        //getStringInput(prompt);
         String customerStatus = "";
         boolean invalidInput = true;
         while (invalidInput) {
             customerStatus = userInput.nextLine();
             switch (customerStatus) {
                 case "1": {
-                    cases.customerPortal();
+                    System.out.println("What type of account would you like to open?");
+                    String accountType = userInput.nextLine();
+                    System.out.println("What is your initial deposit?");
+                    Double initialDeposit = userInput.nextDouble();
+                    System.out.println("Choose a 4 digit PIN?");
+                    String pin = userInput.nextLine();
+                    engine.addNewAccount(pin, new Account(initialDeposit, accountType));
                     invalidInput = false;
                     break;
                 }
@@ -61,7 +67,7 @@ public class Console {
             switch (accountType) {
                 case "1": {
                     System.out.println("You have chosen Checking");
-                    //if engine.bank keyset has
+                    // insert call to correct map key/value(account object)
                     invalidInput = false;
                     break;
                 }
