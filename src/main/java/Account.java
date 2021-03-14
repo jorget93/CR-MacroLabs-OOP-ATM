@@ -1,3 +1,8 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Account {
 
     Double balance;
@@ -5,6 +10,7 @@ public class Account {
     //Might use this for something later.
     //Maybe an added modifier in case of multiple accounts of same type
     String IDnum;
+    List<Double> transHistory=new ArrayList<>();
 
 
     //A new instance of account would need starting funds and account type
@@ -23,6 +29,8 @@ public class Account {
     }
 
     public Double getBalance(){
+        BigDecimal bd = new BigDecimal(balance).setScale(2, RoundingMode.HALF_UP);
+        balance = bd.doubleValue();
         return balance;
     }
 
@@ -32,7 +40,7 @@ public class Account {
 
 
 
-    //Possible area to expand on: perhaps withdrawing works differently pending account type.
+    //Possible area to expand on: perhaps withdrawing works differently pending account type?
     //prevents overdrawing. uses return statement for either
     //A balance or to be used in the transfer method.
     public Double withdraw(Double amount){
@@ -43,23 +51,34 @@ public class Account {
             System.out.println("Cannot withdraw negative amount.");
             return 0.0;
         }else{balance-=amount;
+            transHistory.add(-amount);
             return amount;}
     }
 
     //cannot deposit a negative amount
     public void deposit(Double amount){
-        if (amount>=0.0) balance+=amount;;
+        if (amount>=0.0) {balance+=amount;
+        transHistory.add(amount);}
         if (amount<0.0) System.out.println("You can't deposit what you don't have.");
     }
 
 
 
     public void transfer(Account gettingMoney, Double amount){
+
         gettingMoney.deposit(this.withdraw(amount));
     }
 
+    public void showTransactionHistory(){
+        for(Double i:transHistory){
+            if(i>0.0){
+                System.out.println("Deposit :  "+i);
+            }else if(i<0.0){
+                System.out.println("Withdraw:  "+i);}
+        }
+    }
 
-    //Uncertain if this is needed, but it was in the tests.
+
     //Returns true if the account can be closed. False if not.
     public Boolean closeAccount(){
         if (balance==0.0){return true;}
