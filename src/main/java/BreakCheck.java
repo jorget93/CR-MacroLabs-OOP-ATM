@@ -8,7 +8,7 @@ public class BreakCheck {
         String newString = "";
         boolean redo = true;
         while(redo) {
-            newString = Console.getStringInput("1 - Checking, 2 - Savings, 3 - Investing");
+            newString = Console.getStringInput("1 - Checking, 2 - Savings, 3 - Investing, 4 - Go back, 5 - Exit");
             switch(newString){
                 case "1":
                     redo = false;
@@ -19,6 +19,12 @@ public class BreakCheck {
                 case "3":
                     redo = false;
                     return "Investing";
+                case "4":
+                    redo = false;
+                    return "Go back";
+                case "5":
+                    redo = false;
+                    return "Exit";
                 default: System.out.println("Please choose from the menu!");
             }
         }
@@ -52,4 +58,6 @@ public class BreakCheck {
 
         return newPin;
     }
+
+
 }
