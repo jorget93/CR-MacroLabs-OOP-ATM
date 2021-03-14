@@ -55,9 +55,6 @@ public class Account {
 
 
     public void transfer(Account gettingMoney, Double amount){
-        //Can we write transfer so that it just cal the deposit and withdraw methods?
-        // - ryan
-        //Yes? That's what this is. using the deposit method from one account from a withdrawal
         gettingMoney.deposit(this.withdraw(amount));
     }
 

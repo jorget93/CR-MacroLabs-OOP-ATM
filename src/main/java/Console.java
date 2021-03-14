@@ -105,15 +105,19 @@ public class Console {
             accountAction = userInput.nextLine();
             switch (accountAction) {
                 case "1": {
+                    main.depositMade();
                     break;
                 }
                 case "2": {
+                    main.withdrawMade();
                     break;
                 }
                 case "3": {
+                    main.transferMade();
                     break;
                 }
                 case "4": {
+                    main.additionalAccount();
                     break;
                 }
                 default: {
@@ -124,17 +128,4 @@ public class Console {
         }
         return accountAction;
     }
-    public void deposit() {
-        System.out.print("Amount to be deposited: ");
-        //receive input
-        //parse to int
-        //if not an int return message to try again
-    }
-    public void withdraw() {
-        System.out.print("Amount to be withdrawn: ");
-        //if ( input greater than account balance ask for new amount)
-    }
-
-    //DO A COMMENT
-
 }
