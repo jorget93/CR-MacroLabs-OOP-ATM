@@ -9,7 +9,8 @@ public class Account {
 
     //A new instance of account would need starting funds and account type
     public Account(Double startingBalance, String typeOfAccount){
-        balance=startingBalance;
+        if(startingBalance>=0) balance=startingBalance;
+        else {balance=0.0; System.out.println("Can't open with a negative balance.");}
         accountType=typeOfAccount;
     }
 
@@ -17,7 +18,8 @@ public class Account {
     //The console should probably use the other one.
     //If this constructor IS used, account defaults to a checking account.
     public Account(Double startingBalance){
-        balance=startingBalance;
+        if(startingBalance>=0) balance=startingBalance;
+        else {balance=0.0; System.out.println("Can't open with a negative balance.");}
     }
 
     public Double getBalance(){
@@ -31,17 +33,23 @@ public class Account {
 
 
     //Possible area to expand on: perhaps withdrawing works differently pending account type.
-    //prevents overdrawing
+    //prevents overdrawing. uses return statement for either
+    //A balance or to be used in the transfer method.
     public Double withdraw(Double amount){
         if(amount>balance){
             System.out.println("Insufficient funds for withdrawal.");
+            return 0.0;
+        }else if(amount<0.0){
+            System.out.println("Cannot withdraw negative amount.");
             return 0.0;
         }else{balance-=amount;
             return amount;}
     }
 
+    //cannot deposit a negative amount
     public void deposit(Double amount){
-        balance+=amount;
+        if (amount>=0.0) balance+=amount;;
+        if (amount<0.0) System.out.println("You can't deposit what you don't have.");
     }
 
 
@@ -49,6 +57,7 @@ public class Account {
     public void transfer(Account gettingMoney, Double amount){
         //Can we write transfer so that it just calls the deposit and withdraw methods?
         // - ryan
+        //Yes? That's what this is. using the deposit method from one account from a withdrawal
         gettingMoney.deposit(this.withdraw(amount));
     }
 
