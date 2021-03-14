@@ -38,7 +38,7 @@ public class Console {
                     break;
                 }
                 case "3": {
-                    System.out.println("Good - Bye.");
+                    System.out.println("Thank you for choosing a real financial institution.");
                     System.exit(0);
                 }
                 default: {
@@ -61,7 +61,8 @@ public class Console {
 // this will expand to include transfer and other method calls
     public String accountActions() {
         System.out.println("Would you like to deposit or withdraw funds?");
-        System.out.println("1 - Deposit, 2 - Withdraw, 3 - Transfer, 4 - Go Back, 5 - Exit");
+        System.out.println("1 - Deposit, 2 - Withdraw, 3 - Transfer, 4 - Choose Account, 5 - Add Account \n " +
+                "6 - Close an Account, 7 - Return to Main Menu, 8 - Exit");
 
         String accountAction = "";
         boolean invalidInput = true;
@@ -70,22 +71,41 @@ public class Console {
             switch (accountAction) {
                 case "1": {
                     main.depositMade();
+                    accountActions();
                     break;
                 }
                 case "2": {
                     main.withdrawMade();
+                    accountActions();
                     break;
                 }
                 case "3": {
                     main.transferMade();
+                    accountActions();
                     break;
                 }
                 case "4": {
-                    chooseAccount();
+                    main.chooseAccount();
+                    accountActions();
                     break;
                 }
                 case "5": {
-                    System.out.println("Good - Bye.");
+                    main.additionalAccount();
+                    accountActions();
+                    break;
+                }
+                case "6": {
+                    main.closeAccount();
+                    accountActions();
+                    break;
+                }
+                case "7": {
+                    customerPortal();
+                    accountActions();
+                    break;
+                }
+                case "8": {
+                    System.out.println("Thank you for choosing real financial institution.");
                     System.exit(0);
                 }
                 default: {
