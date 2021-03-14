@@ -1,12 +1,12 @@
 import org.junit.Test;
 
+import java.util.Scanner;
+
 public class ConsoleTest{
 
-    /*@Test
-    public void greetingTest(){
-        Console console = new Console();
-        Console.greeting();
+    @Test
+    public void getStringInputTest(){
+        Scanner scanner = new Scanner((Readable) System.out);
 
-        Assert.AssertTrue("Welcome!")
-    }*/
+    }
 }
