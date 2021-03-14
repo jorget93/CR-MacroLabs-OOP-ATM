@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -8,7 +9,7 @@ public class BreakCheck {
         String newString = "";
         boolean redo = true;
         while(redo) {
-            newString = Console.getStringInput("1 - Checking, 2 - Savings, 3 - Investing, 4 - Go back, 5 - Exit");
+            newString = Console.getStringInput("1 - Checking, 2 - Savings, 3 - Investing, 4 - Exit");
             switch(newString){
                 case "1":
                     redo = false;
@@ -20,11 +21,8 @@ public class BreakCheck {
                     redo = false;
                     return "Investing";
                 case "4":
-                    redo = false;
-                    return "Go back";
-                case "5":
-                    redo = false;
-                    return "Exit";
+                    System.out.println("Thank you for choosing a real financial institution");
+                    System.exit(0);
                 default: System.out.println("Please choose from the menu!");
             }
         }

@@ -15,7 +15,7 @@ public class Main {
         Console consoleOut = new Console();
         consoleOut.greetingMessage();
         consoleOut.customerPortal();
-        consoleOut.chooseAccount();
+        //consoleOut.chooseAccount();
         consoleOut.accountActions();
 
     }
@@ -34,6 +34,7 @@ public class Main {
         Account account = new Account(initialDeposit,accountType);
         atmEngine.addNewAccount(pin, account);
         atmEngine.printAllAccounts(pin);
+
     }
 
     public void depositMade() {
