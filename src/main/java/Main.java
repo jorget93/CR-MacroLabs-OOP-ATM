@@ -18,7 +18,6 @@ public class Main {
         consoleOut.customerPortal();
         //consoleOut.chooseAccount();
         consoleOut.accountActions();
-
     }
 
     public void newCustomer() {
@@ -36,6 +35,10 @@ public class Main {
         atmEngine.addNewAccount(pin, account);
         atmEngine.printAllAccounts(pin);
         currentAccount = 0;
+    }
+
+    public void getAccountSummary(){
+        atmEngine.printAllAccounts(pin);
     }
 
     public void depositMade() {
@@ -61,16 +64,13 @@ public class Main {
         Double amount = userInput.nextDouble();
 
         atmEngine.transfer(this.pin, accountFrom, accountTo, amount);
-
     }
-
 
     public void chooseAccount() {
         atmEngine.printAllAccounts(pin);
         System.out.println("Choose an account:");
         Integer accountToAccess = userInput.nextInt();
-
-
+        currentAccount = accountToAccess;
     }
 
     public void additionalAccount() {
@@ -90,5 +90,11 @@ public class Main {
         atmEngine.closeAccount(pin,accountToClose - 1);
         System.out.println("Account closed the remaining funds will now be dispensed.");
 
+    }
+
+    public void returningCustomer() {
+        System.out.println("Please enter your PIN: ");
+        String returningPin = userInput.nextLine();
+        pin = returningPin;
     }
 }
