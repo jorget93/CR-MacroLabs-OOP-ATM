@@ -63,6 +63,14 @@ public class Main {
     }
 
     public void additionalAccount() {
+        System.out.println("What type of account would you like to add?");
+        String additionalAccountType = userInput.nextLine();
+        System.out.println("What is your initial deposit?");
+        Double initialDeposit = userInput.nextDouble();
+        userInput.nextLine();
 
+        Account account = new Account(initialDeposit,additionalAccountType);
+        atmEngine.addNewAccount(pin, account);
+        atmEngine.printAllAccounts(pin);
     }
 }
