@@ -31,6 +31,53 @@ public class testAtmEngine {
         badBank.addNewAccount(otherUser,c);
         badBank.addNewAccount(otherUser,d);
         badBank.printAllAccounts(otherUser);
+        badBank.printAllAccounts(userPin);
+    }
+
+    @Test
+    public void userExistsTest1(){
+        AtmEngine badBank = new AtmEngine();
+        Account a=new Account(-9.0);
+        Account b=new Account(10.0);
+        Account c=new Account(10.0);
+        Account d=new Account(34.0);
+        String userPin="8675309";
+        String otherUser="12341234";
+        badBank.addNewAccount(userPin,a);
+        badBank.addNewAccount(otherUser,c);
+        Assert.assertTrue(badBank.userExists(userPin));
+
+    }
+
+    @Test
+    public void userExistsTest2(){
+        AtmEngine badBank = new AtmEngine();
+        Account a=new Account(-9.0);
+        Account b=new Account(10.0);
+        Account c=new Account(10.0);
+        Account d=new Account(34.0);
+        String userPin="8675309";
+        String otherUser="12341234";
+        String anotherOne="88888888";
+        badBank.addNewAccount(userPin,a);
+        badBank.addNewAccount(otherUser,c);
+        badBank.addNewAccount(otherUser,b);
+        badBank.addNewAccount(anotherOne,d);
+        Assert.assertTrue(badBank.userExists(otherUser));
+    }
+
+    @Test
+    public void userExistsTest3(){
+        AtmEngine badBank = new AtmEngine();
+        Account a=new Account(-9.0);
+        Account b=new Account(10.0);
+        Account c=new Account(10.0);
+        Account d=new Account(34.0);
+        String userPin="8675309";
+        String otherUser="12341234";
+        badBank.addNewAccount(userPin,a);
+        badBank.addNewAccount(otherUser,c);
+        Assert.assertFalse(badBank.userExists("NotAPassword"));
     }
 
     @Test
