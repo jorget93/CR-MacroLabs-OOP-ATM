@@ -54,16 +54,15 @@ public class Console {
 
     //Simple user Interface
     public String chooseAccount() {
-        System.out.println("Which account would you like to access?");
         String accountType = breakCheck.confirmIsNumber();
         System.out.println("You have chosen " + accountType);
         return accountType;
     }
 // this will expand to include transfer and other method calls
-    public String accountActions() {
-        System.out.println("Would you like to deposit or withdraw funds?");
+    public void accountActions() {
         System.out.println("1 - Account Balance(s) 2 - Deposit, 3 - Withdraw, 4 - Transfer, 5 - Choose Account, " +
-                "\n6 - Add Account 7 - Close an Account, 8 - Return to Main Menu, 9 - Exit");
+                "\n6 - Add Account, 7 - Close an Account, 8 - Transaction History\n" +
+                " 9 - Return to Main Menu, 10 - Exit");
 
         String accountAction = "";
         boolean invalidInput = true;
@@ -72,45 +71,42 @@ public class Console {
             switch (accountAction) {
                 case "1": {
                     main.getAccountSummary();
-                    accountActions();
                     break;
                 }
                 case "2": {
                     main.depositMade();
-                    accountActions();
                     break;
                 }
                 case "3": {
                     main.withdrawMade();
-                    accountActions();
+
                     break;
                 }
                 case "4": {
                     main.transferMade();
-                    accountActions();
                     break;
                 }
                 case "5": {
                     main.chooseAccount();
-                    accountActions();
                     break;
                 }
                 case "6": {
                     main.additionalAccount();
-                    accountActions();
                     break;
                 }
                 case "7": {
                     main.closeAccount();
-                    accountActions();
                     break;
                 }
                 case "8": {
-                    customerPortal();
-                    accountActions();
+                    main.getTransactionHistory();
                     break;
                 }
                 case "9": {
+                    customerPortal();
+                    break;
+                }
+                case "10": {
                     System.out.println("Thank you for choosing real financial institution.");
                     System.exit(0);
                 }
@@ -119,7 +115,7 @@ public class Console {
                     break;
                 }
             }
+            accountActions();
         }
-        return accountAction;
     }
 }

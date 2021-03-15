@@ -69,7 +69,12 @@ public class Main {
     public void chooseAccount() {
         atmEngine.printAllAccounts(pin);
         System.out.println("Choose an account:");
-        Integer accountToAccess = newCheck.isInteger();
+        Integer accountToAccess = newCheck.isInteger();;
+
+        while (accountToAccess > atmEngine.sizeOfAccountList(pin)) {
+            System.out.println("Sorry that account is not in our system. Try again:");
+            accountToAccess = newCheck.isInteger();
+        }
         currentAccount = accountToAccess - 1;
     }
 
@@ -96,19 +101,23 @@ public class Main {
     public void returningCustomer() {
         System.out.println("Please enter your PIN: ");
         String returningPin = "";
-        pin = returningPin;
-        atmEngine.userExists(returningPin);
         int counter = 5;
-        while (!atmEngine.userExists(returningPin) || counter > 0) {
-            System.out.println("Sorry that PIN is not in our system.\n You have " + counter + " tries remaining.");
+        while (!atmEngine.userExists(returningPin) && counter > 0) {
+            System.out.println("Sorry that PIN is not in our system.");
             returningPin = userInput.nextLine();
             counter--;
         }
         if (counter == 0) {
+            System.out.println("Suspicious activity. ATM powering down.");
             System.exit(0);
         }
-
+        pin = returningPin;
     }
 
+    public void getTransactionHistory() {
+        System.out.println("Select one of your accounts.");
+        Integer accountSelection = newCheck.isInteger();
 
+        atmEngine.showAccountTransactions(pin, accountSelection-1);
+    }
 }
