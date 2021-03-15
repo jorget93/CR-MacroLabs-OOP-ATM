@@ -46,6 +46,22 @@ public class BreakCheck {
         return result;
     }
 
+    public Integer isInteger(){
+
+        Integer result = 0;
+        boolean check = true;
+        do {
+            String newString = Console.getStringInput("Enter amount:");
+            try {
+                result = Integer.parseInt(newString);
+                check = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter valid amount!");
+            }
+        } while(check);
+        return result;
+    }
+
     //Generates pin for user
     public String pinGenerator(){
         String newPin = "";
@@ -55,6 +71,22 @@ public class BreakCheck {
         }
 
         return newPin;
+    }
+
+    public Integer isPIN(){
+
+        Integer result = 0;
+        boolean check = true;
+        do {
+            String newString = Console.getStringInput("Enter amount:");
+            try {
+                result = Integer.parseInt(newString);
+                check = false;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter valid PIN");
+            }
+        } while(check);
+        return result;
     }
 
 

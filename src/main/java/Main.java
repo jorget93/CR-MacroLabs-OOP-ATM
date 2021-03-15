@@ -43,25 +43,25 @@ public class Main {
 
     public void depositMade() {
         System.out.print("Amount to be deposited: ");
-        Double amount = userInput.nextDouble();
+        Double amount = newCheck.isDouble();
         atmEngine.depositCash(this.pin, currentAccount, amount);
         atmEngine.printAllAccounts(pin);
     }
 
     public void withdrawMade() {
         System.out.print("Amount to be withdrawn: ");
-        Double amount = userInput.nextDouble();
+        Double amount = newCheck.isDouble();
         atmEngine.withdrawCash(pin, currentAccount, amount);
         atmEngine.printAllAccounts(pin);
     }
 
     public void transferMade() {
         System.out.println("Pull funds from?");
-        Integer accountFrom = userInput.nextInt();
+        Integer accountFrom = newCheck.isInteger();
         System.out.println("Move funds to?");
-        Integer accountTo = userInput.nextInt();
+        Integer accountTo = newCheck.isInteger();
         System.out.println("Amount to be transferred?");
-        Double amount = userInput.nextDouble();
+        Double amount = newCheck.isDouble();
 
         atmEngine.transfer(this.pin, accountFrom - 1, accountTo - 1, amount);
     }
@@ -69,7 +69,7 @@ public class Main {
     public void chooseAccount() {
         atmEngine.printAllAccounts(pin);
         System.out.println("Choose an account:");
-        Integer accountToAccess = userInput.nextInt();
+        Integer accountToAccess = newCheck.isInteger();
         currentAccount = accountToAccess - 1;
     }
 
@@ -85,17 +85,29 @@ public class Main {
 
     public void closeAccount() {
         atmEngine.printAllAccounts(pin);
+        System.out.println("Accounts must be empty to close. Make transfers first if necessary.");
         System.out.println("Which account would you like to close?");
-        Integer accountToClose = userInput.nextInt();
+        Integer accountToClose = newCheck.isInteger();;
         atmEngine.closeAccount(pin,accountToClose - 1);
-        System.out.println("Account must be empty to close. Please make necessary transfer.\n");
+
 
     }
 
     public void returningCustomer() {
         System.out.println("Please enter your PIN: ");
-        String returningPin = userInput.nextLine();
+        String returningPin = "";
         pin = returningPin;
+        atmEngine.userExists(returningPin);
+        int counter = 5;
+        while (!atmEngine.userExists(returningPin) || counter > 0) {
+            System.out.println("Sorry that PIN is not in our system.\n You have " + counter + " tries remaining.");
+            returningPin = userInput.nextLine();
+            counter--;
+        }
+        if (counter == 0) {
+            System.exit(0);
+        }
+
     }
 
 
