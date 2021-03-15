@@ -63,14 +63,14 @@ public class Main {
         System.out.println("Amount to be transferred?");
         Double amount = userInput.nextDouble();
 
-        atmEngine.transfer(this.pin, accountFrom, accountTo, amount);
+        atmEngine.transfer(this.pin, accountFrom - 1, accountTo - 1, amount);
     }
 
     public void chooseAccount() {
         atmEngine.printAllAccounts(pin);
         System.out.println("Choose an account:");
         Integer accountToAccess = userInput.nextInt();
-        currentAccount = accountToAccess;
+        currentAccount = accountToAccess - 1;
     }
 
     public void additionalAccount() {
@@ -88,7 +88,7 @@ public class Main {
         System.out.println("Which account would you like to close?");
         Integer accountToClose = userInput.nextInt();
         atmEngine.closeAccount(pin,accountToClose - 1);
-        System.out.println("Account closed the remaining funds will now be dispensed.");
+        System.out.println("Account must be empty to close. Please make necessary transfer.\n");
 
     }
 
@@ -97,4 +97,6 @@ public class Main {
         String returningPin = userInput.nextLine();
         pin = returningPin;
     }
+
+
 }
