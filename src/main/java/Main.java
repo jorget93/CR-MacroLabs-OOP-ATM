@@ -74,6 +74,7 @@ public class Main {
         Double amount = newCheck.isDouble();
 
         atmEngine.transfer(this.pin, accountFrom - 1, accountTo - 1, amount);
+        atmEngine.printAllAccounts(pin);
     }
 
     public void chooseAccount() {
