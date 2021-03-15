@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
@@ -35,7 +36,7 @@ public class BreakCheck {
         Double result = 0.0;
         boolean check = true;
         do {
-            String newString = Console.getStringInput("Enter amount:");
+            String newString = Console.getStringInput("\r");
             try {
                 result = Double.parseDouble(newString);
                 check = false;
@@ -47,11 +48,10 @@ public class BreakCheck {
     }
 
     public Integer isInteger(){
-
         Integer result = 0;
         boolean check = true;
         do {
-            String newString = Console.getStringInput("Enter amount:");
+            String newString = Console.getStringInput("\r");
             try {
                 result = Integer.parseInt(newString);
                 check = false;
@@ -78,7 +78,7 @@ public class BreakCheck {
         Integer result = 0;
         boolean check = true;
         do {
-            String newString = Console.getStringInput("Enter amount:");
+            String newString = Console.getStringInput("\r");
             try {
                 result = Integer.parseInt(newString);
                 check = false;

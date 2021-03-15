@@ -69,9 +69,13 @@ public class Main {
     public void chooseAccount() {
         atmEngine.printAllAccounts(pin);
         System.out.println("Choose an account:");
-        Integer accountToAccess = newCheck.isInteger();
-        currentAccount = accountToAccess - 1;
+        Integer accountToAccess = newCheck.isInteger();;
 
+        while (accountToAccess > atmEngine.sizeOfAccountList(pin)) {
+            System.out.println("Sorry that account is not in our system. Try again:");
+            accountToAccess = newCheck.isInteger();
+        }
+        currentAccount = accountToAccess - 1;
     }
 
     public void additionalAccount() {
@@ -108,5 +112,12 @@ public class Main {
             System.exit(0);
         }
         pin = returningPin;
+    }
+
+    public void getTransactionHistory() {
+        System.out.println("Select one of your accounts.");
+        Integer accountSelection = newCheck.isInteger();
+
+        atmEngine.showAccountTransactions(pin, accountSelection-1);
     }
 }
