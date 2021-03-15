@@ -72,5 +72,10 @@ public class AtmEngine {
         return false;
     }
 
+    public Integer sizeOfAccountList(String password){
+        List<Account>currentUserAccounts= bank.get(password);
+        return currentUserAccounts.size();
+    }
+
 
 }
