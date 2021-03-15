@@ -5,7 +5,10 @@ public class Console {
     BreakCheck breakCheck = new BreakCheck();
     Scanner userInput = new Scanner(System.in);
 
-    public void greetingMessage(){
+    public void greetingMessage() throws InterruptedException {
+        AsciiArtGenerator asciiGet = new AsciiArtGenerator();
+        asciiGet.introMessage();
+        //System.out.println("\n");
         System.out.println("Welcome to a real financial institution! \n");
     }
 

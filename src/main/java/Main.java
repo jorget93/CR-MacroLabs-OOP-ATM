@@ -10,7 +10,7 @@ public class Main {
     String pin = "";
     Integer currentAccount = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // build instance of AtmEngine and call that in the
         // instance in the console methods
         Console consoleOut = new Console();
@@ -101,6 +101,7 @@ public class Main {
     public void returningCustomer() {
         System.out.println("Please enter your PIN: ");
         String returningPin = "";
+        returningPin = userInput.nextLine();
         int counter = 5;
         while (!atmEngine.userExists(returningPin) && counter > 0) {
             System.out.println("Sorry that PIN is not in our system.");
@@ -108,6 +109,7 @@ public class Main {
             counter--;
         }
         if (counter == 0) {
+
             System.out.println("Suspicious activity. ATM powering down.");
             System.exit(0);
         }

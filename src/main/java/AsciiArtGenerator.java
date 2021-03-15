@@ -1,98 +1,60 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 
 public class AsciiArtGenerator {
 
+    //:D
+    public void introMessage() throws InterruptedException {
+        int width = 100;
+        int height = 21;
 
-    /**
-     * ASCII Art Generator in Java.
-     * Prints a given text as an ASCII text art on the console.
-     * This code is licensed under - CC Attribution CC BY 4.0.
-     * @author www.quickprogrammingtips.com
-     *
-     */
-    public class ASCIIArtGenerator {
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics g = image.getGraphics();
+        g.setFont(new Font("SansSerif", Font.BOLD,20));
 
-        public static final int ART_SIZE_SMALL = 12;
-        public static final int ART_SIZE_MEDIUM = 18;
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2.drawString("$ ATM $", 5, 18);
 
+        for(int y = 0; y< height; y++) {
+            StringBuilder sb = new StringBuilder();
 
-        private static final String DEFAULT_ART_SYMBOL = "*";
+            Thread.sleep(80);
 
-        public enum ASCIIArtFont {
-            ART_FONT_DIALOG("Dialog"), ART_FONT_DIALOG_INPUT("DialogInput"),
-            ART_FONT_MONO("Monospaced"),ART_FONT_SERIF("Serif"), ART_FONT_SANS_SERIF("SansSerif");
-
-            private String value;
-
-            public String getValue() {
-                return value;
+            for(int x = 0; x < width; x++) {
+                sb.append(image.getRGB(x, y) == -16777216 ? "$" : " ");
             }
-
-            private ASCIIArtFont(String value) {
-                this.value = value;
-            }
-        }
-
-        public static void main(String[] args) throws Exception {
-            ASCIIArtGenerator artGen = new ASCIIArtGenerator();
-
-            System.out.println();
-            artGen.printTextArt("Hello", ASCIIArtGenerator.ART_SIZE_MEDIUM);
-            System.out.println();
-
-            System.out.println();
-            artGen.printTextArt("Love is life!", ASCIIArtGenerator.ART_SIZE_SMALL, ASCIIArtFont.ART_FONT_MONO,"@");
-            System.out.println();
+            System.out.println(sb);
 
         }
-
-
-         // Prints ASCII art for the specified text. For size, you can use predefined sizes or a custom size.
-        private void printTextArt(String artText, int textHeight, ASCIIArtFont fontType, String artSymbol) throws Exception {
-            String fontName = fontType.getValue();
-            int imageWidth = findImageWidth(textHeight, artText, fontName);
-
-            BufferedImage image = new BufferedImage(imageWidth, textHeight, BufferedImage.TYPE_INT_RGB);
-            Graphics g = image.getGraphics();
-            Font font = new Font(fontName, Font.BOLD, textHeight);
-            g.setFont(font);
-
-            Graphics2D graphics = (Graphics2D) g;
-            graphics.drawString(artText, 0, getBaselinePosition(g, font));
-
-            for (int y = 0; y < textHeight; y++) {
-                StringBuilder sb = new StringBuilder();
-                for (int x = 0; x < imageWidth; x++)
-                    sb.append(image.getRGB(x, y) == Color.WHITE.getRGB() ? artSymbol : " ");
-                if (sb.toString().trim().isEmpty())
-                    continue;
-                System.out.println(sb);
-            }
-        }
-
-        //Convenience method for printing ascii text art.
-        private void printTextArt(String artText, int textHeight) throws Exception {
-            printTextArt(artText, textHeight, ASCIIArtFont.ART_FONT_DIALOG, DEFAULT_ART_SYMBOL);
-        }
-
-
-         // Using the Current font and current art text find the width of the full image
-        private int findImageWidth(int textHeight, String artText, String fontName) {
-            BufferedImage im = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-            Graphics g = im.getGraphics();
-            g.setFont(new Font(fontName, Font.BOLD, textHeight));
-            return g.getFontMetrics().stringWidth(artText);
-        }
-        //Find where the text baseline should be drawn so that the characters are within image
-        private int getBaselinePosition(Graphics g, Font font) {
-            FontMetrics metrics = g.getFontMetrics(font);
-            int y = metrics.getAscent() - metrics.getDescent();
-            return y;
-        }
+        System.out.println("\n");
     }
+//
+//    public void intruderMessage() throws InterruptedException {
+//        int width = 111;
+//        int height = 21;
+//
+//        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+//        Graphics g = image.getGraphics();
+//        g.setFont(new Font("SansSerif", Font.BOLD,20));
+//
+//        Graphics2D g2 = (Graphics2D) g;
+//        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+//        g2.drawString("Intruder", 5, 18);
+//
+//        for(int y = 0; y< height; y++) {
+//            StringBuilder sb = new StringBuilder();
+//
+//            Thread.sleep(80);
+//
+//            for(int x = 0; x < width; x++) {
+//                sb.append(image.getRGB(x, y) == -16777216 ? "$" : " ");
+//            }
+//            System.out.println(sb);
+//
+//        }
+//        Thread.sleep(200);
+//        System.out.println("\n");
+//    }
 }
