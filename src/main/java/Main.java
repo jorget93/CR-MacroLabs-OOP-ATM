@@ -58,8 +58,18 @@ public class Main {
     public void transferMade() {
         System.out.println("Pull funds from?");
         Integer accountFrom = newCheck.isInteger();
+        while (accountFrom > atmEngine.sizeOfAccountList(pin)) {
+            System.out.println("Sorry that account is not in our system. Try again:");
+            accountFrom = newCheck.isInteger();
+        }
+
         System.out.println("Move funds to?");
         Integer accountTo = newCheck.isInteger();
+        while (accountTo > atmEngine.sizeOfAccountList(pin)) {
+            System.out.println("Sorry that account is not in our system. Try again:");
+            accountTo = newCheck.isInteger();
+        }
+
         System.out.println("Amount to be transferred?");
         Double amount = newCheck.isDouble();
 
